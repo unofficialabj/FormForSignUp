@@ -13,6 +13,11 @@ const Dash = () => {
                         <Avatar size="large" icon={<UserOutlined />} /><span className='span'>Anish Bhakta Joshi</span>
                 </div>
                 <hr /> 
+                <div className='list-left'>
+                  <ul className='list-main'>
+                    <li>Profile</li>
+                  </ul>
+                </div>
                 </div>
             </Col>
             <Col flex="auto">Fill Rest</Col>

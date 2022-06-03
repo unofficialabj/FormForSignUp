@@ -39,7 +39,8 @@ readdirSync('./routes').map((r)=>{
 
 app.use(csrfProtection);
 app.get('/api/csrf-token',(req,res)=>{
-res.json({csrfToken: req.csrfToken()})
+    console.log(req.csrfToken())
+    res.json({csrfToken: req.csrfToken()})
 })
 
 app.listen(port, () => {
