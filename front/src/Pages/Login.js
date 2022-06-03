@@ -14,6 +14,7 @@ const Login = () => {
       password
   })
   console.log(data)
+  console.log("Your email is "+ email + " and password is "+password)
   message.success(data.data);
   
 }
