@@ -3,13 +3,14 @@ import { Form, Input, Button, Col,Row } from 'antd';
 import axios from 'axios';
 import { message } from 'antd';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
+import api from '../utils/api';
 
 const Login = () => {
   const onFinish = async(values) => {
 
     const {email, password} = values;
     try{
-      const data =await axios.post('http://localhost:5000/api/login',{
+      const data =await api.post('/login',{
       email,
       password
   })

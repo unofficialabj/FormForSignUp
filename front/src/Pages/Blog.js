@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import api from '../utils/api'
 
 
 const Blog = () => {
@@ -8,7 +9,7 @@ const Blog = () => {
   // const[data, setData]=useState([]);
 
   const func=async()=>{
-    const apiData=await axios.get(`http://localhost:8000/api/admin`)
+    const apiData=await api.get('/admin')
 
     // setData(apiData.data)
   }

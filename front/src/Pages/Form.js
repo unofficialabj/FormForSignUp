@@ -3,13 +3,14 @@ import { Form, Input, Button, Col,Row } from 'antd';
 import axios from 'axios';
 import { message } from 'antd';
 import { UserOutlined, LockOutlined, SmileOutlined, MailOutlined } from '@ant-design/icons';
+import api from '../utils/api';
 
 const Signup = () => {
   const onFinish = async(values) => {
 
     const {name, username, password, email} = values;
     try{
-      const {data} =await axios.post('http://localhost:5000/api/signup',{
+      const {data} =await api.post('/signup',{
       name,
       username,
       password,
