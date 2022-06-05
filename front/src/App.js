@@ -8,6 +8,7 @@ import Signup from './Pages/Form'
 import Login from './Pages/Login';
 import 'antd/dist/antd.css';
 import Dash from './Pages/dash';
+import Data from './Pages/Data';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path='/about' element={<About />}></Route>
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/dash' element={<Dash />}></Route>
+        <Route path='/data' element={<Data/>}></Route>
+
       </Routes>
     </Router>
     </div>
