@@ -8,3 +8,12 @@ export const admin= async(req,res)=>{
 
    res.json(user)
 }
+
+export const singleUser= async(req,res)=>{
+    const {id} = req.body
+    const findSingleUser= await Signup.findById(
+        id
+    )//.select('-password')
+    res.json(findSingleUser)
+}
+

@@ -70,6 +70,15 @@ button{
 hr{
   opacity: 70%;
 }
-.list-left{
+table{
+  margin-top: 30px;
+}
+.thead{
+  background-color: #4a148c;
+  color:white;
+  border: 2px solid rgb(255, 255, 255);
   
+}
+.delete{
+  margin-left: 30px;
 }

@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, Col,Row } from 'antd';
 import axios from 'axios';
 import { message } from 'antd';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import api from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  
+  const navigate= useNavigate()
+
+  useEffect(()=>{
+    const users = JSON.parse(localStorage.getItem('Users'))
+    console.log(users)
+    if(users){
+      navigate('/data')
+      // console.log('first')
+    }
+  },[])
+
+  
   const onFinish = async(values) => {
 
     const {email, password} = values;
@@ -17,6 +31,12 @@ const Login = () => {
   console.log(data)
   console.log("Your email is "+ email + " and password is "+password)
   message.success(data.data);
+
+  if(data?.status === 200){
+    window.localStorage.setItem('Users',JSON.stringify(data?.data))
+    window.location.reload();
+    navigate('/data')
+  }
   
 }
 catch(err){

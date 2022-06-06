@@ -9,6 +9,8 @@ import Login from './Pages/Login';
 import 'antd/dist/antd.css';
 import Dash from './Pages/dash';
 import Data from './Pages/Data';
+import SingleCard from './Pages/SingleCard';
+import Edit from './Pages/Edit';
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/dash' element={<Dash />}></Route>
         <Route path='/data' element={<Data/>}></Route>
-
+        {/* <Route path='/singleCard/:id' element={<SingleCard/>}></Route> */}
+        <Route path='/edit/:id' element={<Edit/>}></Route>
       </Routes>
     </Router>
     </div>
