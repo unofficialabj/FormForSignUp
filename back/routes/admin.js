@@ -1,4 +1,4 @@
-import {admin} from '../controller/admin'
+import {admin, deleteUser} from '../controller/admin'
 import { requireSignIn } from '../middlewares';
 import { singleUser } from '../controller/admin';
 
@@ -8,6 +8,8 @@ const router = express.Router();
 router.get("/admin",requireSignIn, admin)
 
 router.post("/singleuser",requireSignIn, singleUser)
+
+router.delete("/deleteUser", deleteUser)
 
 
 module.exports = router;

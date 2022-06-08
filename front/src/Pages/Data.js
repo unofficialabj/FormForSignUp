@@ -1,5 +1,6 @@
 import { Row,Col } from 'antd'
 import React, { useEffect, useState } from 'react'
+import Modals from "../Component/Modal/index"
 import {useNavigate} from 'react-router-dom'
 import api from '../utils/api'
 import { Card} from 'antd';
@@ -12,6 +13,8 @@ const Data = () => {
     const navigate = useNavigate()
 
     const[data,setData]=useState([])
+    const [modalVisible,setModalVisible]=useState(false)
+    const [deleteId, setDeleteId]=useState('')
 
     const dbData =async()=>{
         const getData = await api.get("/admin")
@@ -22,16 +25,27 @@ const Data = () => {
 
 useEffect(()=>{
     dbData()
-},[])
+},[modalVisible])
+
 const editPage=(ani)=>{
     console.log(ani)
     // navigate(`/singleCard/${ani}`) //template string 
     navigate('/edit/'+ani)
 }
+const deleteCLick=(d_id)=>{
+  console.log(d_id)
+  setDeleteId(d_id)
+  setModalVisible(true)
+}
+
+
+console.log(modalVisible)
+
 
 
   return (
     <div>
+    <Modals modalVisible={modalVisible} setModalVisible={setModalVisible} deleteUrl={`/deleteUser?user=${deleteId}`}/>
     <Row justify="center" align="middle"> 
     <Col span={10}>
         
@@ -54,7 +68,7 @@ const editPage=(ani)=>{
             <td><EditOutlined onClick={() => {
             editPage(props._id);
           }}/>
-             <DeleteOutlined className='delete'/></td>
+             <DeleteOutlined className='delete' onClick={()=>{deleteCLick(props._id)}}/></td>
         </tr>
 
             )

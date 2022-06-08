@@ -8,28 +8,30 @@ const { Meta } = Card;
 
 const Edit = () => {
     
-    const params = useParams()
+  const params = useParams()
+  // console.log(params)
+
+  
+  const[data,setData]=useState({})
+  
+  const dbData =async()=>{
+    const getData = await api.post("/singleuser",{
+      id : params?.id
+    })
+    setData(getData.data)
     
-
-    const[data,setData]=useState({})
-
-    const dbData =async()=>{
-        const getData = await api.post("/singleuser",{
-            id : params?.id
-        })
-        setData(getData.data)
-
-    }
-    console.log(data);
-    useEffect(()=>{
-        dbData()
-    },[])
-
+  }
+  useEffect(()=>{
+    dbData()
+  },[])
+  console.log(data);
+  
+  const {name, username, email}=data;
 
 
   return (
     <div className='form-head'>
-
+    {data.name?
     <div className='form-body'>
 
     <Row justify='center' align='middle'>
@@ -38,7 +40,10 @@ const Edit = () => {
       <Form
       name="normal_login"
       className="login-form"
-      initialValues={{ remember: true }}
+      initialValues={{ name: name, username: username, email: email}}
+  //     ["name"]:  data.name,
+  //     ["username"]:  data.username,
+  // }}
       
     //   onFinish={onFinish}
       
@@ -47,7 +52,7 @@ const Edit = () => {
         name="name"
         rules={[{ required: true, message: 'Please input your Name' }]}
       >
-        <Input prefix={<SmileOutlined className="site-form-item-icon" />} defaultValue="Anish"/>
+        <Input prefix={<SmileOutlined className="site-form-item-icon" />}/>
       </Form.Item>
 
       <Form.Item
@@ -57,7 +62,7 @@ const Edit = () => {
         <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
       </Form.Item>
 
-      <Form.Item
+      {/* <Form.Item
         name="password"
         rules={[{ required: true, message: 'Please input your Password!' }]}
       >
@@ -66,7 +71,7 @@ const Edit = () => {
           type="password"
           placeholder="Password"
         />
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item
         name="email"
@@ -83,7 +88,7 @@ const Edit = () => {
       </Form.Item>
     </Form>
     </Col></Row>
-    </div>
+    </div>: null}
     </div>
   )
 }
